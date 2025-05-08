@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const hotelSchema = new mongoose.Schema({
   hotelName: {
     type: String,
@@ -12,8 +13,8 @@ const hotelSchema = new mongoose.Schema({
   },
 
   hotelReviews: {
-     type: mongoose.Schema.Types.ObjectId, 
-     ref: 'User' ,
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'User',
     required: true
   },
 
@@ -23,11 +24,10 @@ const hotelSchema = new mongoose.Schema({
     required: true
   },
 
-  hotelPictures: 
-    {
-      type: String,
-      required: true
-    },
+  hotelPictures: {
+    type: String,
+    required: true
+  },
 
   hotelLocation: {
     type: String,
@@ -38,10 +38,10 @@ const hotelSchema = new mongoose.Schema({
     type: Number,
     required: true,
     unique: true,
-},
+  },
 
   amenities: {
-    type:String,
+    type: String,
     required: true,
     enum: ['Free Wi-Fi', 'Parking', 'Swimming Pool', 'Gym', 'Spa', 'Restaurant', 'Bar', 'Room Service']
   },
@@ -50,6 +50,12 @@ const hotelSchema = new mongoose.Schema({
     type: String,
     required: true,
     enum: ['Available', 'Not Available']
+  },
+
+  nearbyFacilities: {
+    type: [String],
+    enum: ['Airport', 'Hospital', 'Bus Station', 'Shopping Mall', 'Train Station', 'Taxi Stand', 'Restaurant', 'Pharmacy'],
+    required: false
   }
 });
 

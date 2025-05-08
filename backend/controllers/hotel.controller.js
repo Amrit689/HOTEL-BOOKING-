@@ -21,13 +21,14 @@ const  getAllHotels = async (req, res) => {
 async function getHotelById(req, res) {
     try {
         const { id } = req.params;
-        const hotel = await Hotel.findById(id).populate('hotelOwner', 'name email');
+        const hotel = await Hotel.findById(id).populate('hotelOwner', 'name email mobile');
         if (!hotel) return res.status(404).send({ message: 'Hotel not found' });
         res.status(200).send(hotel);
     } catch (error) {
         res.status(400).send({ message: error.message });
     }
 }
+
 
 // Add a new hotel
 const addHotel = async (req, res) => {
